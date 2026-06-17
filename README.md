@@ -31,7 +31,7 @@ Setting > text Editor > Format on save
 
 <kbd>Alt</kbd> + <kbd>fleche</kbd>
 
-## Modifier plusieurs occurance
+## Modifier plusieurs occurances
 
 Je met surbrillance puis x le nombre d'occurance  
 <kbd>Ctrl</kbd> + <kbd>D</kbd>
