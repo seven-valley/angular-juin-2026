@@ -94,31 +94,43 @@ export class AppComponent {
 <code>appareil.component.html</code>
 
 ```html
-<p>
-    {{indice}}
-    {{appareil.nom}}
-    {{appareil.status}}
+<li
+  class="list-group-item"
+  [class]="{
+    'list-group-item-success': appareil()?.status,
+    'list-group-item-danger': appareil()?.status == false,
+  }"
+  [class]="getClass()"
+>
+  <h4>{{ appareil()?.name }}</h4>
+</li>
 
-</p>
 ```
 
 <code>appareil.component.ts</code>
 
 ```ts
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Appareil } from '../models/appareil';
 
 @Component({
   selector: 'app-appareil',
   imports: [],
   templateUrl: './appareil.component.html',
-  styleUrl: './appareil.component.scss'
+  styleUrl: './appareil.component.scss',
 })
 export class AppareilComponent {
-@Input() appareil:Appareil = new Appareil();
-@Input() indice:number=0;
+  appareil = input<Appareil>();
+  indice = input<number>();
 
+  getClass(): string {
+    if (this.appareil()?.status) {
+      return 'list-group-item-success';
+    }
+    return 'list-group-item-danger';
+  }
 }
+
 
 ```
 
