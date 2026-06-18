@@ -21,22 +21,39 @@ export class Appareil{
 <code>app.component.html</code>
 
 ```html
-<form (ngSubmit)="onAjouter(a)" #a="ngForm">
-  <input type="text" name="nom" ngModel>
-  <button class="btn btn-success" type="submit">
-    <i class="fa fa-plus"></i>
-  </button>
-</form>
-<ul>
-  <app-appareil 
-  *ngFor="let appareil of appareils;index as indice"
-  [appareil]="appareil"
-  [indice]="indice"
-  ></app-appareil>
+<div class="container mb-3">
+  <div class="row">
+    <div class="col-4">
+      <h2>Les Appareils</h2>
+      <form (ngSubmit)="onAjouter(a)" #a="ngForm">
+        <input
+          type="text"
+          name="nom"
+          class="form-control"
+          placeholder="Appareil"
+          ngModel
+        />
 
-</ul>
-<button (click)="onSwitch(true)">ON</button>
-<button (click)="onSwitch(false)">OFF</button>
+        <button type="submit" class="btn btn-secondary my-3">
+          <i class="fa fa-plus"></i>
+        </button>
+      </form>
+      <ul class="list-group">
+        @for (appareil of appareils; track appareil.name; let i = $index) {
+          <app-appareil [appareil]="appareil" [indice]="i"> </app-appareil>
+        }
+      </ul>
+      <br />
+      <button (click)="onSwitch(true)" class="btn btn-success me-3">
+        ALL ON
+      </button>
+
+      <button (click)="onSwitch(false)" class="ml-2 btn btn-danger">
+        ALL OFF
+      </button>
+    </div>
+  </div>
+</div>
 ```
 
 <code>app.component.ts</code>
