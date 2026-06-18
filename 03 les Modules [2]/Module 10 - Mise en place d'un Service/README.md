@@ -118,7 +118,6 @@ import { Component, OnInit } from "@angular/core";
 import { PersonneService } from "./services/personne.service";
 //..
 export class AppComponent implements  {
-  personnes: Personne[] = [];
  private personneService = inject(PersonneService);
  personnes:Personne[]=this.personneService.personnes;
 
